@@ -1,61 +1,56 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
     Page.Title = string.Format("Razor - {0}", "Basic Form");
-
-    //retreive the data entered into the input controls
-    //var datatype: resolves at execution time
-    //to access a control of your page use: Request.Form["control parameter name"]
-    //the data returned comes in as a STRING
     var myname = Request.Form["dataentry"];
     var thebutton = Request.Form["theButton"];
     //any other additional processing such as database access
 }
-
 @section banner {
     <h1>Basic Form</h1>
 }
-
-<!-- determine if the page is a postback or not-->
-@if(IsPost)
+@if (IsPost)
 {
-    //this true path is done IF this page is returning
-    //from the previous sending
-
-    //IF you have multiple buttons on your form, you SHOULD
-    //determine which button was pressed; thus; dictating WHICH
-    //logic is to be EXECUTED
-    if (thebutton.Equals("submit"))
+    <div class="offset-1">
+        <p>ISPOST = true</p>
+    </div>
+    if (thebutton.Equals("submit")) //submit button was pressed
     {
-        //the Press Me button was pressed
-        if(string.IsNullOrEmpty(myname))
+        if (string.IsNullOrEmpty(myname))
         {
-            <p>You should enter your name.</p>
+            <div class="offset-1">
+                <p style="color:firebrick">You should enter your name.</p>
+            </div>
         }
         else
         {
-            <p>Well: Hello there @myname</p>
+            <div class="offset-1">
+                <p>Well: Hello there @myname</p>
+            </div>
         }
     }
-    else
+    else //reset button was pressed
     {
-        //the Clear button was pressed
         myname = "";
-        <p>You pressed the reset button</p>
+        <div class="offset-1">
+            <p>You pressed the reset button</p>
+        </div>   
     }
 }
 else
 {
-    // use to initialize items on your form BEFORE it is sent
-    // to the user for the FIRST time.
-    <p>this is the first time on this page.</p>
+    <div class="offset-1">
+        <p>IsPost = false</p>
+    </div>
 }
 
-
 <form id="theform" method="post">
-    <label id="label1" for="dataentry">Enter your full name</label>&nbsp;&nbsp;
-    <input type="text" id="dataentry" name="dataentry"
-           value="@myname" />
-    <br /><br />
+    <div class="row">
+        <div class="offset-1">
+            <label id="label1" for="dataentry">Enter your full name</label>&nbsp;&nbsp;
+            <input type="text" id="dataentry" name="dataentry" value="@myname" />
+        </div>
+    </div>
+    <br />
     <div class="row">
         <div class="offset-1">
             <button type="submit" id="theButton" name="theButton"
