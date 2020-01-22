@@ -63,17 +63,20 @@ else
 <form id="theform" method="post">
     <div class="row">
         <div class="offset-1">
-            <label id="lblGameGroup">Select you favourite gaming platforms:</label><br />
-            <input type="checkbox" id="GameGroup" name="GameGroup" value="PS4"
-                   @(Array.IndexOf(choices.Split(','), "PS4") >= 0 ? "checked" : "") />PS4<br />
-            <input type="checkbox" id="GameGroup" name="GameGroup" value="Computer"
-                   @(Array.IndexOf(choices.Split(','), "Computer") >= 0 ? "checked" : "") />Computer<br />
-            <input type="checkbox" id="GameGroup" name="GameGroup" value="XBOX One"
-                   @(Array.IndexOf(choices.Split(','), "XBOX One") >= 0 ? "checked" : "") />XBOX One<br />
-            <input type="checkbox" id="GameGroup" name="GameGroup" value="Switch"
-                   @(Array.IndexOf(choices.Split(','), "Switch") >= 0 ? "checked" : "") />Switch<br />
-            <input type="checkbox" id="GameGroup" name="GameGroup" value="Wii"
-                   @(Array.IndexOf(choices.Split(','), "Wii") >= 0 ? "checked" : "") />Wii<br /><br />
+          
+
+
+
+
+            <label id="lblGameGroup">Choose your meal items:</label><br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="steak"
+                   @(Array.IndexOf(choices.Split(','), "steak") >= 0 ? "checked" : "") />Steak<br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="Seafood"
+                   @(Array.IndexOf(choices.Split(','), "Seafood") >= 0 ? "checked" : "") />Seafood<br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="Vegatables"
+                   @(Array.IndexOf(choices.Split(','), "Vegatables") >= 0 ? "checked" : "") />Vegatables<br />
+
+         
         </div>
     </div>
     <div class="row">

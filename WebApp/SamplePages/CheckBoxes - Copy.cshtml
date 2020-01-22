@@ -1,0 +1,163 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "Form With CheckBoxes");
+    var myname = Request.Form["dataentry"];
+    var thebutton = Request.Form["theButton"];
+    string choices = ""; //global variable
+}
+
+@section banner {
+    <h1>@Page.Title</h1>
+}
+
+
+
+
+
+
+
+
+
+@if (IsPost)
+{
+    @*<div class="offset-1">
+        <p>ISPOST = true</p>
+    </div>*@
+    if (thebutton.Equals("submit")) //submit button was pressed
+    {
+        if (string.IsNullOrEmpty(myname))
+        {
+            <div class="offset-1">
+                <p style="color:firebrick">You don't have a name?</p>
+            </div>
+        }
+        else
+        {
+            <div class="offset-1">
+                <p>Well: Hello there @myname</p>
+            </div>
+        }
+    }
+    else //reset button was pressed
+    {
+        myname = "";
+        <div class="offset-1">
+            <p>You pressed the reset button</p>
+        </div>
+    }
+}
+else
+{
+    @*<div class="offset-1">
+        <p>IsPost = false</p>
+    </div>*@
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@if (IsPost)
+{
+    @*<div class="offset-1">
+        <p>IsPost = true</p>
+    </div>*@
+    choices = "";
+    //var thebutton = Request.Form["theButton"]; //delay retreiving data until postback
+    choices = Request.Form["GameGroup"];
+    if (thebutton.Equals("Reset", StringComparison.OrdinalIgnoreCase)) //pressed reset
+    {
+        <div class="offset-1">
+            <p>You pressed the reset button</p>
+        </div>
+        choices = "";
+    }
+    else //pressed submit
+    {
+        if (choices.IsEmpty())
+        {
+            <div class="offset-1">
+                <p style="color:firebrick">You don't eat?</p>
+            </div>
+            choices = "";
+        }
+        else
+        {
+            //for a checkbox list, your choices will be a set of strings
+            //separated by a delimiter (in this case is a comma)
+            //to divide up this set of strings use the .Split(delimiter) method
+            //to process the collection of strings in choices, consider using foreach
+            <div class="offset-1">
+                <p>
+                    You like to eat:
+                    <ul>
+                        @foreach (var platform in choices.Split(','))
+                        {
+                            <li>@platform</li>
+                        }
+                    </ul>
+                </p>
+            </div>
+        }
+    }
+}
+else
+{
+    @*<div class="offset-1">
+        <p>IsPost = false</p>
+    </div>*@
+    choices = "";
+}
+
+<form id="theform" method="post">
+
+
+
+    <div class="row">
+        <div class="offset-1">
+            <label id="label1" for="dataentry">Customer Name:</label>&nbsp;&nbsp;
+            <input type="text" id="dataentry" name="dataentry" value="@myname" />
+        </div>
+
+
+
+        <div class="row">
+            <div class="offset-1">
+
+
+
+
+
+                <label id="lblGameGroup">Choose your meal items:</label><br />
+                <input type="checkbox" id="GameGroup" name="GameGroup" value="steak"
+                       @(Array.IndexOf(choices.Split(','), "steak") >= 0 ? "checked" : "") />Steak<br />
+                <input type="checkbox" id="GameGroup" name="GameGroup" value="Seafood"
+                       @(Array.IndexOf(choices.Split(','), "Seafood") >= 0 ? "checked" : "") />Seafood<br />
+                <input type="checkbox" id="GameGroup" name="GameGroup" value="Vegatables"
+                       @(Array.IndexOf(choices.Split(','), "Vegatables") >= 0 ? "checked" : "") />Vegatables<br />
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-1">
+                <button type="submit" id="theButton" name="theButton"
+                        value="submit" class="btn btn-primary">
+                    Submit
+                </button>&nbsp;&nbsp;
+                <button type="submit" id="theButton" name="theButton"
+                        value="reset" class="btn btn-light">
+                    Reset
+                </button>
+            </div>
+        </div>
+</form>
