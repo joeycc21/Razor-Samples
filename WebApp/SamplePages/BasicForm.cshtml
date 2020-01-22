@@ -1,12 +1,12 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
-    Page.Title = string.Format("Razor - {0}", "Basic Form");
+    Page.Title = string.Format("Razor - {0}", "Form With Textbox");
     var myname = Request.Form["dataentry"];
     var thebutton = Request.Form["theButton"];
     //any other additional processing such as database access
 }
 @section banner {
-    <h1>Basic Form</h1>
+    <h1>@Page.Title</h1>
 }
 @if (IsPost)
 {
@@ -18,7 +18,7 @@
         if (string.IsNullOrEmpty(myname))
         {
             <div class="offset-1">
-                <p style="color:firebrick">You should enter your name.</p>
+                <p style="color:firebrick">You don't have a name?</p>
             </div>
         }
         else
