@@ -35,6 +35,9 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+
+.
+
 *,
 *::before,
 *::after {
@@ -51,6 +54,14 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+
+
+
+
+
+
+
+
 
 body {
   margin: 0;
@@ -282,6 +293,7 @@ input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
+  color: red;
 }
 
 input[type="date"],

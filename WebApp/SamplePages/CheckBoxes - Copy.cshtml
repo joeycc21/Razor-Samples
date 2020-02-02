@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
-    Page.Title = string.Format("Razor - {0}", "Form With CheckBoxes");
+    Page.Title = string.Format("Exercise 01 - {0}", "Basic form processing");
     var myname = Request.Form["dataentry"];
     var thebutton = Request.Form["theButton"];
     string choices = ""; //global variable
@@ -122,22 +122,43 @@ else
 
 
 
-    <div class="row">
+    @*<div class="row">
         <div class="offset-1">
             <label id="label1" for="dataentry">Customer Name:</label>&nbsp;&nbsp;
             <input type="text" id="dataentry" name="dataentry" value="@myname" />
         </div>
 
 
-
         <div class="row">
             <div class="offset-1">
+                <button type="submit" id="theButton" name="theButton"
+                        value="submit" class="btn btn-primary">
+                    Submit
+                </button>&nbsp;&nbsp;
+                <button type="submit" id="theButton" name="theButton"
+                        value="reset" class="btn btn-light">
+                    Reset
+                </button>
+            </div>
+        </div>*@
+
+
+
+    <div class="row">
+        <div class="offset-1">
+            <label id="label1" for="dataentry">Enter your full name</label>&nbsp;&nbsp;<br />
+            <input type="text" id="dataentry" name="dataentry" value="@myname" />
+        </div>
+
+
+        <div class="row">
+            <div class="offset-2">
 
 
 
 
 
-                <label id="lblGameGroup">Choose your meal items:</label><br />
+                <label id="lblGameGroup">Choose your meal items:</label>
                 <input type="checkbox" id="GameGroup" name="GameGroup" value="steak"
                        @(Array.IndexOf(choices.Split(','), "steak") >= 0 ? "checked" : "") />Steak<br />
                 <input type="checkbox" id="GameGroup" name="GameGroup" value="Seafood"
@@ -148,6 +169,14 @@ else
 
             </div>
         </div>
+
+
+    
+
+
+
+    </div>
+        <br />
         <div class="row">
             <div class="offset-1">
                 <button type="submit" id="theButton" name="theButton"
@@ -160,4 +189,10 @@ else
                 </button>
             </div>
         </div>
+
+
+
+
+        
+
 </form>
