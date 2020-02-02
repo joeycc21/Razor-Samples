@@ -27,13 +27,13 @@
     {
         if (string.IsNullOrEmpty(myname))
         {
-            <div class="offset-1">
+            <div class="col-md-3">
                 <p style="color:firebrick">You don't have a name?</p>
             </div>
         }
         else
         {
-            <div class="offset-1">
+            <div class="col-md-3">
                 <p>Well: Hello there @myname</p>
             </div>
         }
@@ -76,7 +76,7 @@ else
     choices = Request.Form["GameGroup"];
     if (thebutton.Equals("Reset", StringComparison.OrdinalIgnoreCase)) //pressed reset
     {
-        <div class="offset-1">
+        <div class="col-md-3">
             <p>You pressed the reset button</p>
         </div>
         choices = "";
@@ -85,7 +85,7 @@ else
     {
         if (choices.IsEmpty())
         {
-            <div class="offset-1">
+            <div class="col-md-3">
                 <p style="color:firebrick">You don't eat?</p>
             </div>
             choices = "";
@@ -96,7 +96,7 @@ else
             //separated by a delimiter (in this case is a comma)
             //to divide up this set of strings use the .Split(delimiter) method
             //to process the collection of strings in choices, consider using foreach
-            <div class="offset-1">
+            <div class="col-md-3">
                 <p>
                     You like to eat:
                     <ul>
@@ -112,9 +112,7 @@ else
 }
 else
 {
-    @*<div class="offset-1">
-        <p>IsPost = false</p>
-    </div>*@
+  
     choices = "";
 }
 
@@ -122,43 +120,26 @@ else
 
 
 
-    @*<div class="row">
-        <div class="offset-1">
-            <label id="label1" for="dataentry">Customer Name:</label>&nbsp;&nbsp;
-            <input type="text" id="dataentry" name="dataentry" value="@myname" />
-        </div>
 
-
-        <div class="row">
-            <div class="offset-1">
-                <button type="submit" id="theButton" name="theButton"
-                        value="submit" class="btn btn-primary">
-                    Submit
-                </button>&nbsp;&nbsp;
-                <button type="submit" id="theButton" name="theButton"
-                        value="reset" class="btn btn-light">
-                    Reset
-                </button>
-            </div>
-        </div>*@
 
 
 
     <div class="row">
-        <div class="offset-1">
-            <label id="label1" for="dataentry">Enter your full name</label>&nbsp;&nbsp;<br />
+        <div class="col-md-3 ">
+            <label id="label1" for="dataentry">Enter your name</label>&nbsp;&nbsp;<br />
             <input type="text" id="dataentry" name="dataentry" value="@myname" />
         </div>
 
 
         <div class="row">
-            <div class="offset-2">
+            <div class="col-md-9 ">
 
 
 
 
 
-                <label id="lblGameGroup">Choose your meal items:</label>
+                <label id="lblGameGroup">Choose your meal items:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
                 <input type="checkbox" id="GameGroup" name="GameGroup" value="steak"
                        @(Array.IndexOf(choices.Split(','), "steak") >= 0 ? "checked" : "") />Steak<br />
                 <input type="checkbox" id="GameGroup" name="GameGroup" value="Seafood"
@@ -170,15 +151,15 @@ else
             </div>
         </div>
 
-
+    </div>
     
 
 
 
-    </div>
+   
         <br />
         <div class="row">
-            <div class="offset-1">
+            <div class="col-md-3 ">
                 <button type="submit" id="theButton" name="theButton"
                         value="submit" class="btn btn-primary">
                     Submit
